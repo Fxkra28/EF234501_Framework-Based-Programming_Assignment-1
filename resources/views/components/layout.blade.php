@@ -10,9 +10,9 @@
     <header>
         <nav>
             <h1>Fata's Notes</h1>
-            <a href="/">Home</a>
-            <a href="/notes">Notes</a>
-            <a href="/notes/create">Create Note</a>
+            <a href="{{ route('home') }}">Home</a>
+            <a href="{{ route('notes.index') }}">Notes</a>
+            <a href="{{ route('notes.create') }}">Create Note</a>
         </nav>
     </header>
 

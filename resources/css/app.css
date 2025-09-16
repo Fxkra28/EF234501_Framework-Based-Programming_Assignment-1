@@ -15,6 +15,7 @@ h1 {
     line-height: 2.5rem;
     font-weight: 400;
     color: #67e8f9;
+    margin-bottom: 1.5rem;
 }
 
 h2 {
@@ -43,7 +44,6 @@ p {
     line-height: 1.625;
 }
 
-/* header */
 header {
     background-color: #172554;
     border-bottom-width: 4px;
@@ -68,12 +68,31 @@ header h1 {
     margin-right: auto;
     font-size: 1.875rem;
     line-height: 2.25rem;
+    margin-bottom: 0;
+}
+
+header nav a {
+    color: #a78bfa;
+    text-decoration: none;
+    font-size: 1.125rem;
+    transition: color 150ms ease-in-out;
+}
+
+header nav a:hover,
+header nav a.active { /* ✅ Added active state for header links */
+    color: #fff;
+    text-decoration: underline;
 }
 
 
 /* form elements */
 form {
     max-width: 640px;
+}
+
+form label {
+    color: #fff;
+    font-weight: bold;
 }
 
 input,
@@ -85,7 +104,7 @@ textarea {
     margin-bottom: 1rem;
     padding: 0.75rem;
     background-color: #dbeafe;
-    color: #dbeafe;
+    color: #172554;
     border-width: 2px;
     border-color: #000;
     border-style: solid;
@@ -117,6 +136,7 @@ textarea:focus {
     animation: fade-in 0.5s ease-out forwards;
 }
 
+/* ✅ Made card layout more flexible */
 .card {
     background-color: #dbeafe;
     color: #172554;
@@ -124,12 +144,13 @@ textarea:focus {
     border-width: 2px;
     border-color: #000;
     border-style: solid;
-    padding: 0.75rem 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* Pushes items to opposite ends */
+    align-items: center; /* Vertically aligns items */
+    gap: 1.5rem;
     box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -143,10 +164,81 @@ textarea:focus {
     border-color: #67e8f9;
 }
 
+.card-title {
+    flex-shrink: 0;
+    width: 25%;
+}
+
+.card-title h3 {
+    margin: 0;
+    color: #1e3a8a;
+}
+
+.card-content {
+    flex-grow: 1;
+}
+
+.card-content p {
+    margin-top: 0;
+}
+
+.card-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.note-content {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    display: flow-root;
+}
+
+.note-content p:first-child::first-letter {
+    color: #67e8f9;
+    font-size: 4.5rem;
+    font-weight: bold;
+    float: left;
+    line-height: 1;
+    margin-right: 0.75rem;
+    padding-top: 0.25rem;
+}
+
+.note-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    clear: both;
+}
+
+.meta-data {
+    color: #94a3b8;
+    font-size: 0.875rem;
+}
+
 .highlight {
-    border-left-width: 8px;
-    border-left-color: #3b82f6;
-    border-left-style: solid;
+    position: relative;
+    background-color: #172554;
+    border: 2px solid #3b82f6;
+    padding: 1.5rem;
+    font-style: italic;
+    color: #d1d5db;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.highlight::before {
+    content: 'ABOUT';
+    position: absolute;
+    top: -0.75rem;
+    left: 1rem;
+    background-color: #1e3a8a;
+    padding: 0 0.5rem;
+    color: #67e8f9;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: bold;
 }
 
 .btn {
@@ -175,6 +267,33 @@ textarea:focus {
     --tw-translate-y: 0.125rem;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     box-shadow: none;
+}
+
+
+.pagination {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    color: #67e8f9;
+}
+
+.pagination a,
+.pagination span {
+    color: inherit;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 2px solid transparent;
+    transition: all 150ms ease-in-out;
+}
+
+.pagination a:hover {
+    border-color: #67e8f9;
+    color: #fff;
+}
+
+.pagination span.disabled {
+    color: #475569; 
+    cursor: not-allowed;
 }
 
 /* Keyframe Animations */
