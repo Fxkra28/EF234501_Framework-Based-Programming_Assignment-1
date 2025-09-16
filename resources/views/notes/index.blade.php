@@ -1,18 +1,7 @@
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fat's Notes</title>
-</head>
-<body>
 
-<header>
-    <h1>Fat's Notes</h1>
-    <p>Here you can manage your notes.</p>
-</header>
 
+<x-layout>
 <hr>
-
 <main>
     <section>
         <h2>Add New Note</h2>
@@ -32,23 +21,21 @@
             <button type="submit">Save Note</button>
         </form>
     </section>
+<hr>
 
-    <hr>
-
-    <!-- List of existing notes -->
     <section>
         <h2>Your Notes</h2>
         <ul>
             @foreach ($notes as $note)
                 <li>
-                    <h3>{{ $note['title'] }}</h3>
-                    <p>{{ $note['content'] }}</p>
-                    <a href="/notes/{{ $note['id'] }}">View Note</a>
+                    <x-card href="/notes/{{ $note['id'] }}" :highlight="$note['id'] % 2 === 0">
+                        <h3>{{ $note['title'] }}</h3>
+                        <p>{{ $note['content'] }}</p>
+                        <a href="/notes/{{ $note['id'] }}">View Note</a>
+                    </x-card>
                 </li>
             @endforeach
         </ul>
     </section>
 </main>
-
-</body>
-</html>
+</x-layout>

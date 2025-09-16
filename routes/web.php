@@ -8,12 +8,17 @@ Route::get('/', function () {
 
 Route::get('/notes', function () {
     $notes = [
-        ["title" => "Note 1", "content" => "This is the first note", "id" => 1],
-        ["title" => "Note 2", "content" => "This is the second note.", "id" => 2],
-        ["title" => "Note 3", "content" => "This is the third note.", "id" => 3]
+        ["title" => "Note 1", "about" => "This is the first note", "id" => 1],
+        ["title" => "Note 2", "about" => "This is the second note.", "id" => 2],
+        ["title" => "Note 3", "about" => "This is the third note.", "id" => 3]
     ];
-    return view('notes.index', ["notes" => $notes]);
+    return view('notes.index', ["greeting" => "Ini punyanya Fata ya!!", "notes" => $notes]);
 });
+
+Route::get('/notes/create', function () {
+    return view('notes.create');
+});     
+
 
 Route::get('/notes/{id}', function ($id) {
     $notes = [
@@ -30,3 +35,6 @@ Route::get('/notes/{id}', function ($id) {
     
     return view('notes.show', ['notes_detail' => (object)$note, 'id' => $id]);
 });
+
+
+

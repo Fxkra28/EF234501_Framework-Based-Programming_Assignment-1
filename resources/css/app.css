@@ -1,11 +1,184 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+body {
+    background-color: #1e3a8a;
+    color: #e5e7eb;
+    font-family: "VT323", monospace;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 400;
+    color: #67e8f9;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: #d1d5db;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+ul {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.625;
+}
+
+/* header */
+header {
+    background-color: #172554;
+    border-bottom-width: 4px;
+    border-bottom-color: #000;
+    border-bottom-style: solid;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    max-width: 1024px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header h1 {
+    margin-right: auto;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+
+/* form elements */
+form {
+    max-width: 640px;
+}
+
+input,
+select,
+textarea {
+    display: block;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: #dbeafe;
+    color: #dbeafe;
+    border-width: 2px;
+    border-color: #000;
+    border-style: solid;
+    border-radius: 0px;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    background-color: #fff;
+    border-color: #3b82f6;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+}
+
+/* custom classes */
+.container {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    animation: fade-in 0.5s ease-out forwards;
+}
+
+.card {
+    background-color: #dbeafe;
+    color: #172554;
+    border-radius: 0px;
+    border-width: 2px;
+    border-color: #000;
+    border-style: solid;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+}
+
+.card:hover {
+    --tw-translate-y: -0.25rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+    border-color: #67e8f9;
+}
+
+.highlight {
+    border-left-width: 8px;
+    border-left-color: #3b82f6;
+    border-left-style: solid;
+}
+
+.btn {
+    border-radius: 0px;
+    padding: 0.5rem 1rem;
+    background-color: #3b82f6;
+    color: #fff;
+    border-width: 2px;
+    border-color: #000;
+    border-style: solid;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.btn:hover {
+    background-color: #2563eb;
+    --tw-translate-y: -0.125rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.btn:active {
+    background-color: #1d4ed8;
+    --tw-translate-y: 0.125rem;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    box-shadow: none;
+}
+
+/* Keyframe Animations */
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
