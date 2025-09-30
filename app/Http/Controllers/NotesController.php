@@ -4,40 +4,56 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Notes;
+use App\Models\UserNotes;
 
 class NotesController extends Controller
 {
     public function index()
     {
-        $notes = Notes::orderBy('created_at', 'desc')->paginate(10);
+        $notes = Notes::with('userNotes')->orderBy('created_at', 'desc')->paginate(10);
         return view('notes.index', ['notes' => $notes]);
     }
 
     public function create()
     {
-        return view('notes.create');
+        $users = UserNotes::all();
+        return view('notes.create', ['users' => $users]);
     }
 
-    public function show($id)
-   {
-    $note = Notes::findOrFail($id);
-    return view('notes.show', ['note' => $note]);
-    }
-
-    public function edit($id)
+    public function show(Notes $notes)
     {
-        $note = Notes::findOrFail($id);
-        return view('notes.edit', ['note' => $note]);
+        return view('notes.show', ['note' => $notes]);
+    }
+
+    public function edit(Notes $notes)
+    {
+        return view('notes.edit', ['note' => $notes]);
     }
 
     public function store(Request $request) {
-        // Logic to store the note
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'about' => 'required|string|max:255',
+            'content' => 'required|string',
+            'user_id' => 'required|exists:user_notes,id',
+        ]);
+        Notes::create($validated);
+        return redirect()->route('notes.index')->with('success', 'Note created successfully');
     }
     public function update(Request $request, $id) {
-        // Logic to update the note
+        $note = Notes::findOrFail($id);
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'about' => 'required|string|max:255',
+            'content' => 'required|string',
+            'user_id' => 'required|exists:user_notes,id',
+        ]);
+        $note->update($validated);
+        return redirect()->route('notes.index')->with('success', 'Note updated successfully');
     }
-    public function destroy($id) {
-        // Logic to delete the note
+    public function destroy(Notes $notes) {
+        $notes->delete();
+        return redirect()->route('notes.index')->with('success', 'Note deleted successfully');
     }
 
     public function search(Request $request) {

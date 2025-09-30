@@ -3,9 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\UserNotes;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Note>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Notes>
  * 
  * 
  * */
@@ -22,6 +23,7 @@ class NotesFactory extends Factory
             'title' => fake()->sentence(6),
             'about' => fake()->text(200),
             'content' => fake()->paragraph(10),
+            'user_id' => UserNotes::query()->inRandomOrder()->first()->id,
         ];
     }
 }

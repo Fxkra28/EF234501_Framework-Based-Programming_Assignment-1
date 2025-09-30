@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -273,7 +274,8 @@ textarea:focus {
 .pagination {
     margin-top: 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centers the pagination block */
+    gap: 1rem; /* Adds space between page number links */
     color: #67e8f9;
 }
 
@@ -282,18 +284,28 @@ textarea:focus {
     color: inherit;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border: 2px solid transparent;
+    border: 2px solid #67e8f9; /* Changes border to be visible */
+    border-radius: 0.25rem; /* Adds a slight curve to the corners */
     transition: all 150ms ease-in-out;
 }
 
 .pagination a:hover {
-    border-color: #67e8f9;
+    background-color: #67e8f9; /* Changes hover to fill the background */
     color: #fff;
 }
 
 .pagination span.disabled {
     color: #475569; 
     cursor: not-allowed;
+    border-color: #475569; /* Gray border for disabled state */
+}
+
+/* New CSS for the active page link */
+.pagination a.active,
+.pagination span.active {
+    background-color: #67e8f9;
+    color: #fff;
+    pointer-events: none; /* Disables clicking on the current page */
 }
 
 /* Keyframe Animations */

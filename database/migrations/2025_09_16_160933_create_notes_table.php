@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('about'); // Corresponds to the 'about' key
             $table->text('content'); // Corresponds to the 'content' key
             $table->timestamps(); // Creates 'created_at' and 'updated_at' columns
+            $table->foreignId('user_id')->constrained('user_notes')->onDelete('cascade'); // Foreign key to users table
         });
     }
 
